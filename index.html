@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html>
-  <head><title>Page 1</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW</title>
     <script>
-      console.log("This is the debug")
-      var number = 13
+        console.log("This is the debug")
+        var number = 13
+        function response(){
+            alert("Thank you for filling your infomation!");
+        }
+
+        function validateForm(){
+            if (document.contactForm.Fname.value == "") {
+                alert("First Name must be filled out");
+                document.contactForm.firstname.focus();	 
+                return false;
+            }else if (document.contactForm.Lname.value == "") {
+                alert("Last Name must be filled out");
+                document.contactForm.lastname.focus();	 
+                return false;
+            }else if (document.contactForm.Email.value == "") {
+            alert("Email must be filled out");
+            document.contactForm.email.focus();	 
+            return false;}else{
+                response();
+            }
+        }       
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <h1>Hello World!</h1>
     <script>
       document.write("The variable of number is " + number)
     </script>
-   </body>
+    <p></p>
+    <div id="container">
+        <form name="contactForm" action=# onsubmit="validateForm()" >
+            <label for="Fname">First name</label>
+            <input type="text" name="Fname" id="firstname" placeholder="Enter Your First Name">
+            <br>
+            <label for="Lname">Last name</label>
+            <input type="text" name="Lname" id="lastname" placeholder="Enter Your Last Name">
+            <br>
+            <label for="Email">Email</label>
+            <input type="email" name="Email" id="email" placeholder="Enter Your Email Address">
+            <br>
+            <label for="Com">Comments</label>
+            <textarea name="Com" id="comment" cols="30" rows="10" placeholder="Enter Your Comments"></textarea>
+            <br>
+            <input type="submit" value="Submit >>" onclick="alert('Are you sure to submit the form?');">
+    </form>
+    </div>
+</body>
  </html>
