@@ -7,51 +7,110 @@
     <title>HW</title>
     <script>
         console.log("This is the debug")
-        var number = 13
+        var number = 13;
+        let pokemon = new Pokemon('',0,0,0)
+        function Pokemon(name, num, atk, def){
+            this.name = name,
+            this.num = "#" + num,
+            this.atk = atk,
+            this.def = def,
+            this.health = 100,
+            getAttack = function(hurt){
+                if (this.def < atk){
+                    this.health = this.health - (hurt - this.def);
+                    console.log(this.name + " gets " + hurt + " damage!");
+                }else{
+                    console.log(this.name + " doesn't get any damage!");
+                }
+            }
+            showHeath = function(){
+                console.log(this.name + " still has " + this.health +"% health.");
+            }
+        }
         function response(){
-            alert("Thank you for filling your infomation!");
+            alert("Thank you for registering your pokemon!");
+            number++;
+            pokemon.name = document.getElementById('pokemonname').value;
+            pokemon.num = document.getElementById('number').value;
+            pokemon.atk = document.getElementById('attack').value;
+            pokemon.def = document.getElementById('defence').value;
+            
+            console.log(pokemon.num);
+            document.getElementById("1").textContent = "name: "+pokemon.name;
+            document.getElementById("2").textContent = "number: "+pokemon.num;
+            document.getElementById("3").textContent = "attack: "+pokemon.atk;
+            document.getElementById("4").textContent = "defence: "+pokemon.def;
+            document.getElementById("5").textContent = "health: "+pokemon.health;
         }
 
         function validateForm(){
-            if (document.contactForm.Fname.value == "") {
-                alert("First Name must be filled out");
-                document.contactForm.firstname.focus();	 
+            if (document.contactForm.Pname.value == "") {
+                alert("Name must be filled out");
+                document.contactForm.Ptname.focus();	 
                 return false;
-            }else if (document.contactForm.Lname.value == "") {
-                alert("Last Name must be filled out");
-                document.contactForm.lastname.focus();	 
+            }else if (document.contactForm.Num.value == "") {
+                alert("Number must be filled out");
+                document.contactForm.Form.focus();	 
                 return false;
-            }else if (document.contactForm.Email.value == "") {
-            alert("Email must be filled out");
-            document.contactForm.email.focus();	 
-            return false;}else{
+            }else if (document.contactForm.Atk.value == "") {
+            alert("Attack must be filled out");
+            document.contactForm.Atk.focus();	 
+            return false;
+            }else if (document.contactForm.Def.value == "") {
+            alert("Defence must be filled out");
+            document.contactForm.Def.focus();	 
+            return false;
+            }else{
                 response();
             }
         }       
     </script>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:ghostwhite;
+            color:navy;
+            margin: 10;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1>Welcome to the Pokemon battle!</h1>
     <script>
-      document.write("The variable of number is " + number)
+      document.write("The current amount of registerd teams is " + number)
     </script>
     <p></p>
     <div id="container">
         <form name="contactForm" action=# onsubmit="validateForm()" >
-            <label for="Fname">First name</label>
-            <input type="text" name="Fname" id="firstname" placeholder="Enter Your First Name">
+            <label for="Pname">Pokemon Name</label>
+            <input type="text" name="Pname" id="pokemonname" placeholder="Enter Pokemon's Name">
             <br>
-            <label for="Lname">Last name</label>
-            <input type="text" name="Lname" id="lastname" placeholder="Enter Your Last Name">
+            <label for="Num">Number</label>
+            <input type="text" name="Num" id="number" placeholder="(3 digits)">
             <br>
-            <label for="Email">Email</label>
-            <input type="email" name="Email" id="email" placeholder="Enter Your Email Address">
+            <label for="Attack">Attack</label>
+            <input type="text" name="Atk" id= "attack" placeholder="Enter Pokemon's Attack">
+            <br>
+            <label for="Defence">Defence</label>
+            <input type="text" name="Def" id= "defence" placeholder="Enter Pokemon's Defence">
             <br>
             <label for="Com">Comments</label>
             <textarea name="Com" id="comment" cols="30" rows="10" placeholder="Enter Your Comments"></textarea>
             <br>
             <input type="submit" value="Submit >>" onclick="alert('Are you sure to submit the form?');">
     </form>
+    </div>
+    <div id="info">
+        <h1>your pokemon's info</h1>
+        <h3 id="1"></h3>
+        <p id="2"></p>
+        <p id="3"></p>
+        <p id="4"></p>
+        <p id="5"></p>
     </div>
 </body>
  </html>
